@@ -78,7 +78,35 @@ Tabi Script is a comprehensive travel recording application that supports users 
 4. WHEN a user deletes content THEN the system SHALL permanently remove the data while maintaining referential integrity
 5. WHEN backing up data THEN the system SHALL provide automatic cloud synchronization with user consent
 
-### Requirement 7: Content Organization and Management
+### Requirement 7: Interactive Map View for Destinations and Routes
+
+**User Story:** As a traveler, I want to visualize my destinations and routes on an interactive map, so that I can better understand the geographical layout of my travel plan and optimize my itinerary.
+
+#### Acceptance Criteria
+
+1. WHEN a user views their travel plan THEN the system SHALL display all destinations as markers on an interactive map
+2. WHEN a user selects multiple destinations THEN the system SHALL calculate and display optimal routes between locations
+3. WHEN viewing the map THEN the system SHALL allow users to zoom, pan, and interact with destination markers
+4. WHEN a user clicks on a destination marker THEN the system SHALL display detailed information about that location
+5. WHEN planning routes THEN the system SHALL provide distance and estimated travel time between destinations
+6. WHEN a user searches for new destinations THEN the system SHALL provide place search functionality with autocomplete
+7. WHEN adding destinations from map search THEN the system SHALL automatically populate location coordinates and address information
+
+### Requirement 8: Calendar View for Travel Schedule Management
+
+**User Story:** As a traveler, I want to view and manage my travel schedule in a calendar format, so that I can easily see my itinerary timeline and make scheduling adjustments.
+
+#### Acceptance Criteria
+
+1. WHEN a user views their travel plan THEN the system SHALL provide a calendar view showing scheduled destinations and activities
+2. WHEN viewing the calendar THEN the system SHALL support multiple view modes including monthly, weekly, and daily views
+3. WHEN a destination has a planned date THEN the system SHALL display it as an event on the calendar
+4. WHEN a user drags and drops calendar events THEN the system SHALL update the destination dates accordingly
+5. WHEN viewing calendar events THEN the system SHALL use different colors or indicators for different destination categories
+6. WHEN a user clicks on a calendar event THEN the system SHALL show detailed destination information
+7. WHEN managing the schedule THEN the system SHALL allow users to add, edit, or remove scheduled activities directly from the calendar view
+
+### Requirement 9: Content Organization and Management
 
 **User Story:** As a frequent traveler, I want to organize multiple travel plans and blogs efficiently, so that I can easily find and manage my travel content.
 
