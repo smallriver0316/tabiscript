@@ -32,11 +32,11 @@ Tabi Script is a comprehensive travel recording application that supports users 
 
 ### Requirement 3: AI-Powered Blog Generation
 
-**User Story:** As a traveler, I want the system to automatically generate a travel blog from my posts and photos, so that I can easily share my travel story without spending time on manual blog creation.
+**User Story:** As a traveler, I want the system to automatically generate a travel blog from my plans, posts and photos, so that I can easily share my travel story without spending time on manual blog creation.
 
 #### Acceptance Criteria
 
-1. WHEN a user completes their travel THEN the system SHALL automatically generate a blog draft using AI based on their posts and photos
+1. WHEN a user completes their travel THEN the system SHALL automatically generate a blog draft using AI based on their plans, posts and photos
 2. WHEN generating a blog THEN the system SHALL organize content chronologically and thematically
 3. WHEN creating blog content THEN the system SHALL incorporate both text posts and photo descriptions
 4. WHEN the AI generates content THEN the system SHALL maintain the user's personal voice and style preferences

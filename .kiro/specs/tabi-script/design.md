@@ -173,9 +173,9 @@ interface MapAPI {
 
 // Calendar API
 interface CalendarAPI {
-  'GET /calendar/:travelId': (travelId: string) => Promise<CalendarEvent[]>
-  'POST /calendar/event': (event: CreateCalendarEventRequest) => Promise<CalendarEvent>
-  'PUT /calendar/event/:id': (id: string, updates: UpdateCalendarEventRequest) => Promise<CalendarEvent>
+  'GET /calendar/:travelId': (travelId: string) => Promise<Event[]>
+  'POST /calendar/event': (event: CreateEventRequest) => Promise<Event>
+  'PUT /calendar/event/:id': (id: string, updates: UpdateEventRequest) => Promise<Event>
   'DELETE /calendar/event/:id': (id: string) => Promise<void>
 }
 
@@ -262,8 +262,8 @@ CREATE TABLE destinations (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Calendar events (for scheduled activities)
-CREATE TABLE calendar_events (
+-- Events (for scheduled activities)
+CREATE TABLE events (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   travel_id UUID REFERENCES travels(id) ON DELETE CASCADE,
   travel_plan_id UUID REFERENCES travel_plans(id) ON DELETE CASCADE,
@@ -339,7 +339,7 @@ ALTER TABLE user_profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE travels ENABLE ROW LEVEL SECURITY;
 ALTER TABLE travel_plans ENABLE ROW LEVEL SECURITY;
 ALTER TABLE destinations ENABLE ROW LEVEL SECURITY;
-ALTER TABLE calendar_events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE events ENABLE ROW LEVEL SECURITY;
 ALTER TABLE routes ENABLE ROW LEVEL SECURITY;
 ALTER TABLE travel_posts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE media_files ENABLE ROW LEVEL SECURITY;
@@ -370,7 +370,7 @@ CREATE POLICY "Users can manage own travel plans" ON travel_plans
 CREATE POLICY "Users can manage own destinations" ON destinations
   FOR ALL USING (auth.uid() = (SELECT user_id FROM travels WHERE id = travel_id));
 
-CREATE POLICY "Users can manage own calendar events" ON calendar_events
+CREATE POLICY "Users can manage own events" ON events
   FOR ALL USING (auth.uid() = (SELECT user_id FROM travels WHERE id = travel_id));
 
 CREATE POLICY "Users can manage own routes" ON routes
@@ -439,24 +439,24 @@ interface PlaceSearchProps {
 ```typescript
 // Calendar component interfaces
 interface TravelCalendarProps {
-  events: CalendarEvent[]
-  onEventSelect: (event: CalendarEvent) => void
-  onEventUpdate: (eventId: string, updates: Partial<CalendarEvent>) => void
-  onEventCreate: (event: CreateCalendarEventRequest) => void
+  events: Event[]
+  onEventSelect: (event: Event) => void
+  onEventUpdate: (eventId: string, updates: Partial<Event>) => void
+  onEventCreate: (event: CreateEventRequest) => void
   view: CalendarView
   editable: boolean
 }
 
-interface CalendarEventProps {
-  event: CalendarEvent
-  onEdit: (event: CalendarEvent) => void
+interface EventProps {
+  event: Event
+  onEdit: (event: Event) => void
   onDelete: (eventId: string) => void
   draggable: boolean
 }
 
 interface ScheduleViewProps {
   travelPlan: TravelPlan
-  events: CalendarEvent[]
+  events: Event[]
   onScheduleUpdate: (updates: ScheduleUpdate[]) => void
 }
 
@@ -562,7 +562,7 @@ interface TravelPlan {
   mapZoom?: number
   destinations: Destination[]
   routes: RouteInfo[]
-  events: CalendarEvent[]
+  events: Event[]
   createdAt: string
   updatedAt: string
 }
@@ -584,7 +584,7 @@ interface Destination {
   createdAt: string
 }
 
-interface CalendarEvent {
+interface Event {
   id: string
   travelId: string
   travelPlanId: string

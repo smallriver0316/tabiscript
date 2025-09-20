@@ -15,7 +15,7 @@ This implementation plan converts the Tabi Script design into a series of increm
 
 - [ ] 2. Database Schema and Supabase Configuration
   - Create Supabase project and configure database
-  - Implement database schema with all tables (travels, travel_plans, destinations, calendar_events, routes, travel_posts, media_files, generated_blogs)
+  - Implement database schema with all tables (travels, travel_plans, destinations, events, routes, travel_posts, media_files, generated_blogs)
   - Set up Row Level Security (RLS) policies for all tables
   - Create database functions and triggers for data validation
   - Test database operations with sample data
@@ -79,13 +79,13 @@ This implementation plan converts the Tabi Script design into a series of increm
 - [ ] 10. Calendar Integration Setup
   - Install and configure FullCalendar for web application
   - Create basic calendar component with month/week/day views
-  - Set up calendar event data structure and management
+  - Set up event data structure and management
   - Implement calendar styling and theming
   - Add calendar navigation and view switching
   - _Requirements: 8.1, 8.2, 8.3_
 
-- [ ] 11. Calendar Event Management
-  - Create calendar events from destinations and travel plans
+- [ ] 11. Event Management
+  - Create events from destinations and travel plans
   - Implement drag-and-drop scheduling functionality
   - Add event creation, editing, and deletion from calendar
   - Create color-coded events by destination category
