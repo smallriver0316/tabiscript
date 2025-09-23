@@ -15,7 +15,7 @@ Tabi Script follows a monorepo architecture using npm workspaces, keeping web, m
 ## Current Structure
 
 ```
-tabi-script/
+tabiscript/
 ├── .git/                    # Git repository
 ├── .vscode/                 # VS Code workspace settings
 ├── .kiro/                   # Kiro AI assistant configuration
@@ -30,7 +30,7 @@ tabi-script/
 ## Recommended Monorepo Structure
 
 ```
-tabi-script/
+tabiscript/
 ├── apps/                   # Application packages
 │   ├── web/               # Next.js web application
 │   │   ├── app/           # Next.js App Router
@@ -148,7 +148,7 @@ tabi-script/
 
 ```json
 {
-  "name": "tabi-script",
+  "name": "tabiscript",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -176,8 +176,8 @@ tabi-script/
 
 ```typescript
 // In apps/web or apps/mobile
-import { Travel, Destination } from '@tabi-script/shared-types'
-import { formatDate, validateEmail } from '@tabi-script/shared-utils'
+import { Travel, Destination } from '@tabiscript/shared-types'
+import { formatDate, validateEmail } from '@tabiscript/shared-utils'
 ```
 
 ## File Naming Conventions
@@ -273,7 +273,7 @@ npm run test --workspaces
 npm install lodash --workspace=apps/web
 
 # Add shared package as dependency
-npm install @tabi-script/shared-types --workspace=apps/mobile
+npm install @tabiscript/shared-types --workspace=apps/mobile
 ```
 
 ### Shared Package Development
