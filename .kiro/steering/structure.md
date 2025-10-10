@@ -2,7 +2,7 @@
 
 ## Repository Organization
 
-Tabi Script follows a monorepo architecture using npm workspaces, keeping web, mobile, and API applications in a single repository. This approach enables shared code, coordinated releases, and simplified development workflow while maintaining clear separation of concerns.
+Tabi Script follows a monorepo architecture using pnpm workspaces, keeping web, mobile, and API applications in a single repository. This approach enables shared code, coordinated releases, and simplified development workflow while maintaining clear separation of concerns.
 
 ## Benefits of Monorepo Approach
 
@@ -150,18 +150,14 @@ tabiscript/
 {
   "name": "tabiscript",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "dev": "npm run dev --workspace=apps/web",
-    "dev:mobile": "npm run dev --workspace=apps/mobile",
-    "dev:api": "npm run dev --workspace=apps/api",
-    "build": "npm run build --workspaces",
-    "test": "npm run test --workspaces",
-    "lint": "npm run lint --workspaces",
-    "type-check": "npm run type-check --workspaces"
+    "dev": "pnpm --filter=web dev",
+    "dev:mobile": "pnpm --filter=mobile dev",
+    "dev:api": "pnpm --filter=api dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "type-check": "pnpm -r type-check"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
@@ -170,6 +166,14 @@ tabiscript/
     "prettier": "^3.0.0"
   }
 }
+```
+
+### pnpm-workspace.yaml
+
+```yaml
+packages:
+  - 'apps/*'
+  - 'packages/*'
 ```
 
 ### Shared Package Usage
@@ -255,36 +259,39 @@ import type { Travel, Destination } from '@/types/travel'
 
 ```bash
 # Install dependencies for all workspaces
-npm install
+pnpm install
 
 # Run development server for web app
-npm run dev --workspace=apps/web
+pnpm --filter=web dev
 
 # Run mobile development
-npm run dev --workspace=apps/mobile
+pnpm --filter=mobile dev
 
 # Build all applications
-npm run build --workspaces
+pnpm -r build
 
 # Run tests across all packages
-npm run test --workspaces
+pnpm -r test
 
 # Install package in specific workspace
-npm install lodash --workspace=apps/web
+pnpm --filter=web add lodash
 
 # Add shared package as dependency
-npm install @tabiscript/shared-types --workspace=apps/mobile
+pnpm --filter=mobile add @tabiscript/shared-types
 ```
 
 ### Shared Package Development
 
 ```bash
 # Build shared packages first
-npm run build --workspace=packages/shared-types
-npm run build --workspace=packages/shared-utils
+pnpm --filter=shared-types build
+pnpm --filter=shared-utils build
 
 # Watch mode for shared package development
-npm run dev --workspace=packages/shared-types
+pnpm --filter=shared-types dev
+
+# Build all shared packages
+pnpm --filter="./packages/*" build
 ```
 
 ## Configuration Files

@@ -40,8 +40,8 @@ Tabi Script is built as a modern full-stack application with Next.js for web, Re
 ### Package Management
 
 - **Node.js**: v18+ required
-- **Package Manager**: npm or yarn
-- **Monorepo**: Not currently used, but consider for web/mobile shared code
+- **Package Manager**: pnpm (preferred for performance and disk efficiency)
+- **Monorepo**: pnpm workspaces for web/mobile shared code
 
 ### Code Quality
 
@@ -63,55 +63,55 @@ Tabi Script is built as a modern full-stack application with Next.js for web, Re
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Start development server (web)
-npm run dev
+pnpm dev
 
 # Start mobile development
-npx expo start
+pnpm dlx expo start
 
 # Run tests
-npm test
+pnpm test
 
 # Type checking
-npm run type-check
+pnpm type-check
 
 # Linting
-npm run lint
+pnpm lint
 
 # Build for production
-npm run build
+pnpm build
 ```
 
 ### Database Management
 
 ```bash
 # Run Supabase locally
-npx supabase start
+pnpm dlx supabase start
 
 # Generate types from database
-npx supabase gen types typescript --local > types/database.types.ts
+pnpm dlx supabase gen types typescript --local > types/database.types.ts
 
 # Reset local database
-npx supabase db reset
+pnpm dlx supabase db reset
 
 # Deploy migrations
-npx supabase db push
+pnpm dlx supabase db push
 ```
 
 ### Deployment
 
 ```bash
 # Deploy to Vercel (web)
-vercel --prod
+pnpm dlx vercel --prod
 
 # Build mobile app
-npx expo build:android
-npx expo build:ios
+pnpm dlx expo build:android
+pnpm dlx expo build:ios
 
 # Deploy Supabase functions
-npx supabase functions deploy
+pnpm dlx supabase functions deploy
 ```
 
 ## Environment Variables
