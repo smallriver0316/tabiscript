@@ -70,7 +70,7 @@ graph TB
 
 **Frontend:**
 
-- Web: Next.js 14 with App Router, TypeScript, Tailwind CSS
+- Web: Next.js 15 with App Router, TypeScript, Tailwind CSS
 - Mobile: React Native with Expo, TypeScript, React Navigation
 - Maps: Mapbox GL JS for web, react-native-mapbox-gl for mobile
 - Calendar: FullCalendar for web, react-native-calendars for mobile
@@ -190,7 +190,7 @@ CMD ["npm", "start"]
 
 ```json
 {
-  "family": "tabi-script-api",
+  "family": "tabiscript-api",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "512",
@@ -199,8 +199,8 @@ CMD ["npm", "start"]
   "taskRoleArn": "arn:aws:iam::account:role/ecsTaskRole",
   "containerDefinitions": [
     {
-      "name": "tabi-script-api",
-      "image": "account.dkr.ecr.region.amazonaws.com/tabi-script:latest",
+      "name": "tabiscript-api",
+      "image": "account.dkr.ecr.region.amazonaws.com/tabiscript:latest",
       "portMappings": [
         {
           "containerPort": 3000,
@@ -216,13 +216,13 @@ CMD ["npm", "start"]
       "secrets": [
         {
           "name": "DATABASE_URL",
-          "valueFrom": "arn:aws:secretsmanager:region:account:secret:tabi-script/database"
+          "valueFrom": "arn:aws:secretsmanager:region:account:secret:tabiscript/database"
         }
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/tabi-script",
+          "awslogs-group": "/ecs/tabiscript",
           "awslogs-region": "us-east-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -389,7 +389,7 @@ FOR VALUES FROM ('2025-01-01') TO ('2026-01-01');
 RDSInstance:
   Type: AWS::RDS::DBInstance
   Properties:
-    DBInstanceIdentifier: tabi-script-db
+    DBInstanceIdentifier: tabiscript-db
     DBInstanceClass: db.t3.micro  # Start small, can scale up
     Engine: postgres
     EngineVersion: '15.4'
@@ -422,10 +422,10 @@ export const cognitoConfig = {
   userPoolClientId: process.env.COGNITO_CLIENT_ID!,
   region: 'us-east-1',
   oauth: {
-    domain: 'tabi-script.auth.us-east-1.amazoncognito.com',
+    domain: 'tabiscript.auth.us-east-1.amazoncognito.com',
     scope: ['email', 'openid', 'profile'],
-    redirectSignIn: 'https://tabi-script.com/auth/callback',
-    redirectSignOut: 'https://tabi-script.com/',
+    redirectSignIn: 'https://tabiscript.com/auth/callback',
+    redirectSignOut: 'https://tabiscript.com/',
     responseType: 'code'
   }
 }
@@ -461,7 +461,7 @@ Resources:
       EnableDnsSupport: true
       Tags:
         - Key: Name
-          Value: !Sub tabi-script-vpc-${Environment}
+          Value: !Sub tabiscript-vpc-${Environment}
 
   # Public Subnets for ALB
   PublicSubnet1:
@@ -499,7 +499,7 @@ Resources:
   ECSCluster:
     Type: AWS::ECS::Cluster
     Properties:
-      ClusterName: !Sub tabi-script-${Environment}
+      ClusterName: !Sub tabiscript-${Environment}
       CapacityProviders:
         - FARGATE
         - FARGATE_SPOT
@@ -513,7 +513,7 @@ Resources:
   ApplicationLoadBalancer:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties:
-      Name: !Sub tabi-script-alb-${Environment}
+      Name: !Sub tabiscript-alb-${Environment}
       Scheme: internet-facing
       Type: application
       Subnets:

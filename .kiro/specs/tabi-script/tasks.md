@@ -7,7 +7,7 @@ This implementation plan converts the Tabi Script design into a series of increm
 ## Task List
 
 - [ ] 1. Project Setup and Foundation
-  - Set up Next.js 14 project with TypeScript and Tailwind CSS
+  - Set up Next.js 15 project with TypeScript and Tailwind CSS
   - Configure Supabase client and environment variables
   - Set up basic project structure with folders for components, hooks, utils, and types
   - Configure ESLint, Prettier, and basic testing setup with Vitest

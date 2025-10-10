@@ -1,0 +1,39 @@
+{
+  "name": "tabiscript",
+  "version": "0.0.1",
+  "description": "Tabi Script is a comprehensive travel recording application that supports users throughout their entire travel journey - from pre-travel planning to post-travel blog creation.",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^24.7.0",
+    "eslint": "^9.37.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "dev": "pnpm --filter=web dev",
+    "dev:mobile": "pnpm --filter=mobile dev",
+    "dev:api": "pnpm --filter=api dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "type-check": "pnpm -r type-check"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smallriver0316/tabiscript.git"
+  },
+  "keywords": [
+    "Next.js",
+    "ReactNative",
+    "Supabase",
+    "Mapbox"
+  ],
+  "author": "smallriver0316",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/smallriver0316/tabiscript/issues"
+  },
+  "homepage": "https://github.com/smallriver0316/tabiscript#readme"
+}

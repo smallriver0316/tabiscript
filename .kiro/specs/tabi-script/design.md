@@ -56,7 +56,7 @@ graph TB
 
 **Frontend:**
 
-- Web: Next.js 14 with App Router, TypeScript, Tailwind CSS, React Query (TanStack Query)
+- Web: Next.js 15 with App Router, TypeScript, Tailwind CSS, React Query (TanStack Query)
 - Mobile: React Native with Expo, TypeScript, React Navigation, Supabase client
 - Maps: Mapbox GL JS for web, react-native-mapbox-gl for mobile
 - Calendar: FullCalendar with React wrapper for web, react-native-calendars for mobile
