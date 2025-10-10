@@ -284,11 +284,11 @@ pnpm --filter=mobile add @tabiscript/shared-types
 
 ```bash
 # Build shared packages first
-pnpm --filter=shared-types build
-pnpm --filter=shared-utils build
+pnpm --filter=@tabiscript/shared-types build
+pnpm --filter=@tabiscript/shared-utils build
 
 # Watch mode for shared package development
-pnpm --filter=shared-types dev
+pnpm --filter=@tabiscript/shared-types dev
 
 # Build all shared packages
 pnpm --filter="./packages/*" build
